@@ -5,6 +5,14 @@ import Database from 'better-sqlite3';
 const db = new Database('user-data.db');
 db.pragma('journal_mode = WAL');
 
+const sqlInit = 'CREATE TABLE entry_log (date INTEGER PRIMARY KEY, intensity TEXT NOT NULL, feeling TEXT NOT NULL)'
+try {
+    db.exec(sqlInit);
+} catch (error) {
+    console.log(error);
+}
+
+// Initialize app
 const app = express()
 
 
