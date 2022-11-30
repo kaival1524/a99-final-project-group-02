@@ -1,18 +1,18 @@
 {
   "name": "fitness-friend",
   "version": "1.0.0",
-  "description": "You don't need to accept this assignment since you are already assigned to teams. So, there is no assignment invite link for a99.",
-  "main": "index.js",
+  "description": "A web app that allows users to log their daily exercise routine",
   "type": "module",
   "scripts": {
-    "test": "node index.js --port=5555"
+    "test": "node index.js --port=5555",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/comp426-2022-fall/a99-final-project-group-02.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/comp426-2022-fall/a99-final-project-group-02/issues"
   },
