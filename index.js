@@ -1,5 +1,12 @@
 import express from 'express';
+import minimist from 'minimist';
 import Database from 'better-sqlite3';
+
+// Args
+const args = minimist(process.argv.slice(2));
+
+// Get port from args or set to default 2000
+const port = args.port || 2000;
 
 // Create database
 const db = new Database('user-data.db');
@@ -26,6 +33,6 @@ app.get('*', (req, res) => {
     res.status(404).send('404 NOT FOUND')
 })
 
-app.listen(2000, () => {
-    console.log('Server listening on port 2000');
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
 });
