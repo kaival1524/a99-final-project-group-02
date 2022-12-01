@@ -4,7 +4,6 @@
   "description": "A web app that allows users to log their daily exercise routine",
   "type": "module",
   "scripts": {
-    "test": "node index.js --port=3000",
     "start": "nodemon index.js --port=3000"
   },
   "repository": {
