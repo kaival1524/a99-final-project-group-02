@@ -7,7 +7,7 @@ import {fileURLToPath} from 'url';
 // Args
 const args = minimist(process.argv.slice(2));
 
-// Get port from args or set to default 2000
+// Set port
 const port = args.port || 2000;
 
 /* Create database
@@ -28,21 +28,19 @@ try {
 } catch (error) {
     console.log(error);
 }*/
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Initialize app
 const app = express();
-const router = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// add html files
-router.get('/',function(req,res){
-    res.sendFile(path.join(__dirname + '/view/login.html'));
-});
+// Link with html/css
+app.set('view engine', 'ejs');
+app.use(express.static("public"));
 
-app.use('/', router);
+app.get('/', (req, res) => {
+    res.render('login')
+})
 
 // Post 404 if no endpoint found
 app.get('*', (req, res) => {
