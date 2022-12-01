@@ -8,7 +8,7 @@ import {fileURLToPath} from 'url';
 const args = minimist(process.argv.slice(2));
 
 // Set port
-const port = args.port || 2000;
+const port = args.port || 5000;
 
 /* Create database
 const db = new Database('data.db');
@@ -32,19 +32,59 @@ try {
 // Initialize app
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Link with html/css
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.render('homepage')
-})
-
-app.get('/login', (req, res) => {
     res.render('login')
 })
+
+app.post('/createaccount', (req, res) => {
+    const userName = req.body.username;
+    const passWord = req.body.password;
+
+
+
+});
+
+app.post('/login', (req, res) => {
+    const userName = req.body.username;
+    const passWord = req.body.password;
+
+    
+
+});
+
+app.post('/deleteaccount', (req, res) => {
+    const userName = req.body.username;
+    const passWord = req.body.password;
+
+    
+
+});
+
+app.post('/home', (req, res) => {
+
+    // render homepage 
+
+});
+
+app.post('/fitnesstracker', (req, res) => {
+    const time = req.body.exercisetime;
+    const type = req.body.workoutype;
+    const goal = req.body.goal;
+    
+
+});
+
+app.post('/goals', (req, res) => {
+
+    // TODO
+
+});
 
 // Post 404 if no endpoint found
 app.get('*', (req, res) => {
