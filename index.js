@@ -39,10 +39,14 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
+    res.render('homepage')
+})
+
+app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.post('/createaccount', (req, res) => {
+/*app.post('/createaccount', (req, res) => {
     const userName = req.body.username;
     const passWord = req.body.password;
 
@@ -84,7 +88,7 @@ app.post('/goals', (req, res) => {
 
     // TODO
 
-});
+});*/
 
 // Post 404 if no endpoint found
 app.get('*', (req, res) => {
