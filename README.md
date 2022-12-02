@@ -1,16 +1,12 @@
 # a99 Final Project
 
-## UPDATE
+## Fitness Friend
 
-You don't need to accept this assignment since you are already assigned to teams. So, there is no assignment invite link for a99.
+Final Project For Group 2
 
 ## Summary 
 
-COMP426 final project template repository.
-All your code and documentation goes here.
-Change this text to be a brief description of your final project.
-Put the name of your project in the header above.
-You will change everything below to be the main technical documentation, as outlined below.
+Fitness Friend is a tool for users to track their daily fitness activity by recording workout type, workout intensity, and workout time. The user can register an account and input all the necessary information. Their previous fitness history is also available for viewing as well. The user is able to create an account, log in, delete their account, and logout in addition to the above features. Hoepfully, Fitness Friend is able to promote positive physical health and track the physical exercise of users. 
 
 ## First steps
 
