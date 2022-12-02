@@ -6,54 +6,18 @@ Final Project For Group 2
 
 ## Summary 
 
-Fitness Friend is a tool for users to track their daily fitness activity by recording workout type, workout intensity, and workout time. The user can register an account and input all the necessary information. Their previous fitness history is also available for viewing as well. The user is able to create an account, log in, delete their account, and logout in addition to the above features. Hoepfully, Fitness Friend is able to promote positive physical health and track the physical exercise of users. 
+Fitness Friend is a tool for users to track their daily fitness activity by recording workout type, workout intensity, and workout time. The user can register an account and input all the necessary information. Their previous fitness history is also available for viewing as well. The user is able to create an account, log in, delete their account, and logout in addition to the above features. Hoepfully, Fitness Friend is able to promote positive changes in physical health and track the physical exercise of users. 
 
-## First steps
+## Video Demo
 
-Other steps that you will need to take after your team has accepted the assignment:
+## Project Preview and Planning
 
-1. Choose a license and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
+## Instructions
 
-## Team mangement
+## Team Roles
 
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
+1. Kaival Patel - Documentation Manager
+2. Adam Doyle - Review Manager
+3. Elvin Liu - Release Manager
 
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
-
-Some basic roles you will want to consider:
-
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. A release manager - someone to manage the packaging and release process for your prototype package
-5. A project manager - someone keeping track of all the moving parts and make sure that everything that needs to happen is happening.
-5. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Database lead
-    4. Design lead
-    5. Etc.
-
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
-
-## Check in with instructional staff
-
-Schedule a few times throughout the rest of the semester for your team to check-in with your assigned instructional staff member during their scheduled office hours. 
-
-## Assignment instructions
-
-And that is about all you need to get started.
-
-All the rest of the assignment instructions are available at: https://comp426.johndmart.in/a/99
-
-Good skill and be creative!
+## Future Extensions
