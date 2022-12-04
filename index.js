@@ -46,7 +46,7 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
     res.redirect('Homepage')
 
 });
