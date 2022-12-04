@@ -39,11 +39,11 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.render('login')
+    res.render('loginpage')
 })
 
-app.get('/login', (req, res) => {
-    res.render('login')
+app.get('/loginpage', (req, res) => {
+    res.render('loginpage')
 })
 
 app.post('/', (req, res) => {
