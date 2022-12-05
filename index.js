@@ -12,7 +12,7 @@ const port = args.port || 5000;
 
 // Initialize app
 const app = express();
-
+ 
 // link stylesheet to the right folder
 app.use(express.static("public"))
 app.set('view engine', 'ejs');
