@@ -39,18 +39,24 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.render('loginpage')
-})
-
-app.get('/loginpage', (req, res) => {
-    res.render('loginpage')
-})
-
-app.post('/', (req, res) => {
-    res.redirect('Homepage')
-
+    res.render('login')
 });
 
+app.get('/login', (req, res) => {
+    res.render('login')
+});
+
+app.get('/home', (req, res) => {
+    res.render('home')
+});
+
+app.post('/', (req, res) => {
+    res.render('home')
+});
+
+app.post('/login', (req, res) => {
+    res.redirect('/home')
+})
 /*app.post('/createaccount', (req, res) => {
     const userName = req.body.username;
     const passWord = req.body.password;
