@@ -1,0 +1,57 @@
+body {
+    background-color: rgb(35, 34, 35);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    /*background-size: cover;*/
+}
+
+ 
+/*.box {
+    width:500px;
+    
+    position: center;
+    background-color: white;
+}*/
+
+.title {
+    font-size: 500%;
+    text-align: center;
+    letter-spacing: 3x;
+    color:  rgb(115, 246, 0);
+}
+
+.sectitle {
+    font-size: 300%;
+    text-align: center;
+    letter-spacing: 3x;
+    color:  rgb(115, 246, 0);
+}
+.normaltext {
+    font-size: 150%;
+    text-align: left;
+    letter-spacing: 5x;
+    color:  rgb(115, 246, 0);
+}
+
+.login-btn{
+    color: #3f3d3d;
+    border: 3px solid rgb(3, 2, 2);
+    padding: 10px 30px;
+    font-size: 13px;
+    background: rgb(115, 246, 0);
+    border-radius: 12px;
+    }
+    .login-btn:hover{
+    border: 3px solid #00dcf9;
+    background: #DCDDEE;
+    transition: 1s;
+    color: #77a0ec;
+    }
+
+/*-----------------------------------------------------------------*/
+/*Start of Homepage*/

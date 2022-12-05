@@ -39,12 +39,17 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('loginpage')
 })
 
-app.get('/login', (req, res) => {
-    res.render('login')
+app.get('/loginpage', (req, res) => {
+    res.render('loginpage')
 })
+
+app.post('/', (req, res) => {
+    res.redirect('Homepage')
+
+});
 
 /*app.post('/createaccount', (req, res) => {
     const userName = req.body.username;

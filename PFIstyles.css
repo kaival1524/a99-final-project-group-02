@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(35, 34, 35);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    /*background-size: cover;*/
+}
+
+.title {
+    font-size: 500%;
+    text-align: center;
+    letter-spacing: 3x;
+    color: rgb(24, 246, 249);;
+}
+
+.sectitle {
+    font-size: 300%;
+    text-align: center;
+    letter-spacing: 3x;
+    color: rgb(24, 246, 249);;
+}
+
+
+.enter {
+    border: 3px solid rgb(242, 233, 233);
+    background-color: rgb(24, 246, 249);;
+    text-align: center;
+    font-size: 250%;
+    border-radius: 12px;
+
+}
+
+
+.enter:hover {
+
+    background-color: #B71C1C;
+
+}
