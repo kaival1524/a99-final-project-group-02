@@ -10,11 +10,11 @@ const args = minimist(process.argv.slice(2));
 // Set port
 const port = args.port || 5000;
 
-/* Create database
+// Create database
 const db = new Database('data.db');
 db.pragma('journal_mode = WAL');
 
-// Initialize database
+/* Initialize database
 const sqlInit = `CREATE TABLE users ( id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR );`
 try {
     db.exec(sqlInit);
@@ -49,8 +49,6 @@ app.get('/login', (req, res) => {
 /*app.post('/createaccount', (req, res) => {
     const userName = req.body.username;
     const passWord = req.body.password;
-
-
 
 });
 
