@@ -48,24 +48,21 @@ app.get('/login', (req, res) => {
     res.render('login')
 });
 
-app.get('/Homepage', (req, res) => {
-    res.render('Homepage')
+app.get('/home', (req, res) => {
+    res.render('home')
 });
 
 app.post('/enterLogin', (req, res) => {
-   res.render('Homepage');
-
+   res.render('home');
 });
 
-app.post('/CreateAcntPg', (req, res) => {
-    res.render('createAcc');
+app.post('/createAccount', (req, res) => {
+    res.render('create-account');
  });
 
 app.post('/returnLogin', (req, res) => {
     res.render('login');
-}); 
-
-app.post
+});
 
 // app.post('/createaccount', (req, res) => {
 //     const userName = req.body.username;
