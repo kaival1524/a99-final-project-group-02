@@ -24,27 +24,21 @@ app.set('views', path.join(path.dirname(fileURLToPath(import.meta.url)), 'views'
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// // Initialize database
-// const sqlInit = `CREATE TABLE users ( id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR );`
-// try {
-//     db.exec(sqlInit);
-// } catch (error) {
-//     console.log(error);
-// }
+// Initialize database
+try {
+    db.exec(`CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR);`);
+} catch (error) {}
 
-// const sqlInit2 = 'CREATE TABLE entry_log (date INTEGER PRIMARY KEY, intensity TEXT NOT NULL, feeling TEXT NOT NULL)'
-// try {
-//     db.exec(sqlInit);
-// } catch (error) {
-//     console.log(error);
-// }
+try {
+    db.exec(`CREATE TABLE fitness (id INTEGER PRIMARY KEY AUTOINCREMENT, userName VARCHAR, passWord VARCHAR);`);
+} catch (error) {}
 
 // Endpoints For Rendering Pages and Buttons
 app.get('/', (req, res) => {
     res.render('login');
 });
 
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
     res.render('login')
 });
 
@@ -53,11 +47,30 @@ app.get('/home', (req, res) => {
 });
 
 app.post('/enterLogin', (req, res) => {
-   res.render('home');
+    const userName = req.body.username;
+    const passWord = req.body.password; 
+    const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}' and pass = '${passWord}'`);
+    let temp = prepData.get();
+
+    if (temp === undefined) {
+        res.render('userName-incorrect2');
+    }
+    else {
+        res.render('home');
+    };
 });
 
 app.post('/createAccount', (req, res) => {
-    res.render('create-account');
+    const userName = req.body.username;
+    const passWord = req.body.password; 
+    const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}'`);
+    let temp = prepData.get();
+
+    if (temp === undefined) {
+        db.exec(`INSERT INTO users (user, pass) VALUES ('${userName}', '${passWord}')`)
+        res.render('create-account');
+    }
+    else {res.render('userName-incorrect')};
  });
 
 app.post('/returnLogin', (req, res) => {
