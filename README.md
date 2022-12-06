@@ -8,11 +8,15 @@ Final Project For Group 2
 
 Fitness Friend is a tool for users to track their daily fitness activity by recording workout type, workout intensity, and workout time. The user can register an account and input all the necessary information. Their previous fitness history is also available for viewing as well. The user is able to create an account, log in, delete their account, and logout in addition to the above features. Hopefully, Fitness Friend is able to promote positive changes in physical health and track the physical exercise of users. 
 
+## Dependencies
++ [Express.js - v4.18.2](https://expressjs.com/)
++ [EJS - v3.1.8](https://ejs.co/)
++ [better-sqlite3 - v8.0.1](https://www.npmjs.com/package/better-sqlite3)
++ [nodemon - v2.0.20](https://www.npmjs.com/package/nodemon)
+
 ## Video Demo
 
 ## Project Preview and Planning
-
-## Instructions
 
 ## Install and Run
 
