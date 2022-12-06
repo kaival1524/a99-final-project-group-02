@@ -14,21 +14,6 @@ const port = args.port || 5000;
 const db = new Database('data.db');
 db.pragma('journal_mode = WAL');
 
-/* Initialize database
-const sqlInit = `CREATE TABLE users ( id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR );`
-try {
-    db.exec(sqlInit);
-} catch (error) {
-    console.log(error);
-}
-
-const sqlInit2 = 'CREATE TABLE entry_log (date INTEGER PRIMARY KEY, intensity TEXT NOT NULL, feeling TEXT NOT NULL)'
-try {
-    db.exec(sqlInit);
-} catch (error) {
-    console.log(error);
-}*/
-
 // Initialize app
 const app = express();
  
@@ -38,6 +23,21 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(path.dirname(fileURLToPath(import.meta.url)), 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// // Initialize database
+// const sqlInit = `CREATE TABLE users ( id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR );`
+// try {
+//     db.exec(sqlInit);
+// } catch (error) {
+//     console.log(error);
+// }
+
+// const sqlInit2 = 'CREATE TABLE entry_log (date INTEGER PRIMARY KEY, intensity TEXT NOT NULL, feeling TEXT NOT NULL)'
+// try {
+//     db.exec(sqlInit);
+// } catch (error) {
+//     console.log(error);
+// }
 
 // Endpoints For Rendering Pages and Buttons
 app.get('/', (req, res) => {
@@ -62,6 +62,26 @@ app.post('/createAccount', (req, res) => {
 
 app.post('/returnLogin', (req, res) => {
     res.render('login');
+});
+
+app.post('/NewFitnessInfo', (req, res) => {
+    res.render('new-fitness-info');
+});
+
+app.post('/enterWorkout', (req, res) => {
+    res.render('entry-success');
+});
+
+app.post('/returnHome', (req, res) => {
+    res.render('home');
+});
+
+app.post('/DeleteAcntPg', (req, res) => {
+    res.render('delete-account');
+});
+
+app.post('/logout', (req, res) => {
+    res.render('logout');
 });
 
 // app.post('/createaccount', (req, res) => {
