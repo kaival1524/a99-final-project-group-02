@@ -15,3 +15,8 @@ for having all user information).
 
 ## **Meeting 2 (12/1)** 
 
+
+
+## **Meeting 3 (12/6)**
+
+We held a meeting to finish debugging the front end of our code. We also worked on creating the database.
