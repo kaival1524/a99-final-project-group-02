@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/comp426-2022-fall/a99-final-project-group-02#readme",
   "dependencies": {
-    "better-sqlite3": "^8.0.0",
+    "better-sqlite3": "^8.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "nodemon": "^2.0.20"
