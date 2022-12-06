@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <body>
-    <link rel = "stylesheet" href = "PFIstyles.css">
+    <link rel = "stylesheet" href = "nfi-styles.css">
     <ul>
         <li>
-            <label class = "title"> Past Fitness Info <br> </label>
+            <label class = "title"> New Fitness Info <br> </label>
             <ul>
                 <li>
                     <label class = "sectitle">
@@ -22,14 +22,7 @@
                 <li>
                     <input type = "text" name = "username" id = "username">
                 </li>
-                <li>
-                    <label class = "sectitle">
-                        Exercise Date
-                    </label>
-                </li>
-                <li>
-                    <input type = "text" name = "username" id = "username">
-                </li>
+                
             </ul>
         </li>
         <p>
@@ -39,16 +32,22 @@
             
         </p>
         <li>
-            <button class = "enter">
-                Enter Workout
-        </button>
+            <form method = "post" action = "/new-fitness-info">
+                <input type = "submit" value = " Enter Workout" class = "enter">
+            </form>
+            
         </li>
         <p>
 
         </p>
-        <form method = "post" action = "Homepage">
-            <input type = "submit" value  = "Return to Homepage" class = "enter">
-        </form>
+        <p>
+
+        </p>
+        <li>
+            <form method = "post" action = "/home">
+                <input type = "submit" value = "Back" class = "enter">
+            </form>
+        </li>
 
         
     </ul>

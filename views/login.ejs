@@ -1,36 +1,50 @@
 <!DOCTYPE html>
-
-<body>
-    <link rel = "stylesheet" href = "styles.css">
-    <head>
-        <ul>
-            <li class = "title"> Fitness Friend </li>
-            <li class = "sectitle"> Login </li>
-            
-            <li> Username <input type = "text" name = "username" id = "username"> </li>
-            <p>
-
-            </p>
-            <li> Password <input type = "text" name = "username" id = "username"> </li>
-            <p>
-
-            </p>
-            <p>
+<html lang = "en">
+    <body>
+        <link rel = "stylesheet" href = "fe-styles.css">
+        
+            <ul>
+                <label class = "title"> Fitness Friend </label>
+                <li> <label class = "sectitle"> Login </label> </li>
+                <form method = "post" action = "/enterLogin">
+                    <li class = "normaltext"> Username <input type = "text" name = "username" id = "username"> </li>
+                    <p>
+                    </p>
+                    <li class = "normaltext"> Password <input type = "text" name = "username" id = "username"> </li>
+                    <p>
+    
+                    </p>
+                    <li>
+                        <input type = "submit" value = "Login" class = "login-btn">
+                    </li>
+                    <p>
+                </form>
                 
-            </p>
-            <p>
-                
-            </p>
-            <li class = "title">
-                Create Account
-            </li>
-            <li> Enter Username <input type = "text" name = "username" id = "username"> </li>
-            <p>
-
-            </p>
-            <li> Enter Password <input type = "text" name = "username" id = "username"> </li>
-            <p>
-
-        </ul>
-    </head>
-</body>
+                <p>
+                    
+                </p>
+                <li>
+                    <label class = "sectitle">Create Account</label>
+                </li>
+                <li class = "normaltext"> Enter Username <input type = "text" name = "username" id = "username"> </li>
+                <p>
+    
+                </p>
+                <li class = "normaltext"> Enter Password <input type = "text" name = "username" id = "username"> </li>
+                <p>
+    
+                </p>
+                <p>
+    
+                </p>
+                <li>
+                    <form method = "post" action = "/createAccount">
+                        <input type = "submit" value = "Create Account" class = "login-btn">
+                    </form>    
+        
+                </li>
+    
+            </ul>
+        
+    </body>
+</html>

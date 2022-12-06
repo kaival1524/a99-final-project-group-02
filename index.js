@@ -10,11 +10,11 @@ const args = minimist(process.argv.slice(2));
 // Set port
 const port = args.port || 5000;
 
-/* Create database
+// Create database
 const db = new Database('data.db');
 db.pragma('journal_mode = WAL');
 
-// Initialize database
+/* Initialize database
 const sqlInit = `CREATE TABLE users ( id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR );`
 try {
     db.exec(sqlInit);
@@ -31,69 +31,92 @@ try {
 
 // Initialize app
 const app = express();
+ 
+// link stylesheet to the right folder
+app.use(express.static("public"))
+app.set('view engine', 'ejs');
+app.set('views', path.join(path.dirname(fileURLToPath(import.meta.url)), 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Link with html/css
-app.set('view engine', 'ejs');
-app.use(express.static("public"));
-
+// Endpoints For Rendering Pages and Buttons
 app.get('/', (req, res) => {
-    res.render('loginpage')
-})
-
-app.get('/loginpage', (req, res) => {
-    res.render('loginpage')
-})
-
-app.post('/', (req, res) => {
-    res.redirect('Homepage')
-
+    res.render('login');
 });
 
-/*app.post('/createaccount', (req, res) => {
-    const userName = req.body.username;
-    const passWord = req.body.password;
-
-
-
+app.get('/login', (req, res) => {
+    res.render('login')
 });
 
-app.post('/login', (req, res) => {
-    const userName = req.body.username;
-    const passWord = req.body.password;
+app.get('/home', (req, res) => {
+    res.render('home')
+});
 
+app.post('/enterLogin', (req, res) => {
+   res.render('home');
+});
+
+app.post('/createAccount', (req, res) => {
+    res.render('create-account');
+ });
+
+app.post('/returnLogin', (req, res) => {
+    res.render('login');
+});
+
+// app.post('/createaccount', (req, res) => {
+//     const userName = req.body.username;
+//     const passWord = req.body.password;
+//     const accountCreationTime = new Date(Date.now());
+
+//     // SQL query to add to database
+
+//     // if username exists, render 'username exists, try another username' button for returning to login
+//     // if valid username, render 'success, account is created' button for returning to login
+// });
+
+// app.get('/deleteaccount', (req, res) => {
+//     const accountDeletionTime = new Date(Date.now());
     
+//     // SQL query to remove from database
 
-});
+//     // render delete account page, button for returning to login
+// });
 
-app.post('/deleteaccount', (req, res) => {
-    const userName = req.body.username;
-    const passWord = req.body.password;
+// app.post('/login', (req, res) => {
+//     const userName = req.body.username;
+//     const passWord = req.body.password;
+//     const logInTime = new Date(Date.now());
 
+//     // SQL query to store login times
+
+//     // if unsuccessful login, render 'incorrect username or password', button for returning to login
+//     // else render homepage (uncomment line below)
+//     // res.render('homepage');
+
+// });
+
+// app.get('/logout', (req, res) => {
+//     const logOutTime = new Date(Date.now());
+
+//     // SQL query to store logout times
     
+//     // render login page (uncomment line below)
+//     // res.render('login')
 
-});
+// });
 
-app.post('/home', (req, res) => {
-
-    // render homepage 
-
-});
-
-app.post('/fitnesstracker', (req, res) => {
-    const time = req.body.exercisetime;
-    const type = req.body.workoutype;
-    const goal = req.body.goal;
+// app.post('/fitnesslog', (req, res) => {
+//     const time = req.body.exercisetime;
+//     const type = req.body.workoutype;
+//     const exerciseLogTime = new Date(Date.now());
     
+//     // SQL query to store fitness information
+// });
 
-});
+// app.get('/pastfitness', (req, res) => {
 
-app.post('/goals', (req, res) => {
-
-    // TODO
-
-});*/
+// });
 
 // Post 404 if no endpoint found
 app.get('*', (req, res) => {
