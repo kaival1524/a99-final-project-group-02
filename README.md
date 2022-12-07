@@ -33,3 +33,6 @@ Fitness Friend is a tool for users to track their daily fitness activity by reco
 3. Elvin Liu - Release Manager
 
 ## Future Extensions
++ Add styling to the workout and user log pages
++ Ability to customize and sort viewing of workout logs
++ Ability to add other users as "friends" and view your friends' past workouts
