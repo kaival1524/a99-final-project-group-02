@@ -30,8 +30,13 @@ try {
 } catch (error) {}
 
 try {
-    db.exec(`CREATE TABLE fitness (id INTEGER PRIMARY KEY AUTOINCREMENT, userName VARCHAR, passWord VARCHAR);`);
+    db.exec(`CREATE TABLE finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
 } catch (error) {}
+
+try {
+    db.exec(`CREATE TABLE log (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, type VARCHAR, date VARCHAR);`);
+} catch (error) {}
+
 
 // Endpoints For Rendering Pages and Buttons
 app.get('/', (req, res) => {
@@ -52,10 +57,18 @@ app.post('/enterLogin', (req, res) => {
     const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}' and pass = '${passWord}'`);
     let temp = prepData.get();
 
+    /*const stmt = db.prepare(`SELECT * FROM users`);
+    let all = stmt.all();
+    res.render('fitness-logs', {user: all});*/
+
+    const time = new Date(Date.now());
+    db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time.toISOString()}');`);
+
     if (temp === undefined) {
         res.render('userName-incorrect2');
     }
     else {
+        req.app.set('user', userName);
         res.render('home');
     };
 });
@@ -70,7 +83,7 @@ app.post('/createAccount', (req, res) => {
         db.exec(`INSERT INTO users (user, pass) VALUES ('${userName}', '${passWord}')`)
         res.render('create-account');
     }
-    else {res.render('userName-incorrect')};
+    else {res.render('userName-exists')};
  });
 
 app.post('/returnLogin', (req, res) => {
@@ -82,6 +95,11 @@ app.post('/NewFitnessInfo', (req, res) => {
 });
 
 app.post('/enterWorkout', (req, res) => {
+    const time = req.body.time;
+    const type = req.body.type;
+    const date = req.body.date;
+    let userName = req.app.get('user');
+    db.exec(`INSERT INTO finess (user, time, type, date) VALUES ('${userName}', '${time}', '${type}', '${date}');`);
     res.render('entry-success');
 });
 
@@ -90,12 +108,27 @@ app.post('/returnHome', (req, res) => {
 });
 
 app.post('/DeleteAcntPg', (req, res) => {
+    const userName = req.app.get('user');
+    db.exec(`DELETE FROM users WHERE user = '${userName}'`);
     res.render('delete-account');
 });
 
 app.post('/logout', (req, res) => {
-    res.render('logout');
+    res.render('login');
 });
+
+app.post('/viewLogs', (req, res) => {
+    const stmt = db.prepare(`SELECT * FROM log`);
+    let all = stmt.all();
+    res.render('user-logs', {log: all});
+});
+
+app.post('/viewPastWorkouts', (req, res) => {
+    let userName = req.app.get('user');
+    const stmt = db.prepare(`SELECT * FROM finess WHERE user = '${userName}'`);
+    let all = stmt.all();
+    res.render('fitness-logs', {finess: all});
+})
 
 // app.post('/createaccount', (req, res) => {
 //     const userName = req.body.username;

@@ -3,36 +3,37 @@
 <body>
     <link rel = "stylesheet" href = "pfi-styles.css">
     <ul>
-        <form>
+        <form method = "post" action = "/enterWorkout">
             <li>
                 <label class = "title"> Insert Fitness Info <br> </label>
                 <ul>
                     <li>
                         <label class = "sectitle">
-                            Exercise Time:
+                            Exercise Time (minutes):
                         </label>
                     </li>   
                     <li>
-                        <input type = "text" name = "username" id = "username"> 
+                        <input type = "text" name = "time" id = "time"> 
                     </li>
                     <li>
                         <label class = "sectitle">
-                            Exercise Type
+                            Exercise Type:
                         </label>
                     </li>
                     <li>
-                        <input type = "text" name = "username" id = "username">
+                        <input type = "text" name = "type" id = "type">
                     </li>
                     <li>
                         <label class = "sectitle">
-                            Exercise Date
+                            Exercise Date (MM/DD):
                         </label>
                     </li>
                     <li>
-                        <input type = "text" name = "username" id = "username">
+                        <input type = "text" name = "date" id = "date">
                     </li>
                 </ul>
             </li>
+            <input type = "submit" value  = "Enter Workout" class = "enter">
         </form>
         <p>
 
@@ -40,10 +41,7 @@
         <p>
             
         </p>
-        <form method = "post" action = "enterWorkout">
-            <input type = "submit" value  = "Enter Workout" class = "enter">
-        </form>
-
+        
         <p>
 
         </p>
@@ -51,8 +49,6 @@
             <input type = "submit" value = " Return to Home Page" class = "enter">
         </form>
 
-        
     </ul>
-   
     
 </body>
