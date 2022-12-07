@@ -57,19 +57,17 @@ app.post('/enterLogin', (req, res) => {
     const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}' and pass = '${passWord}'`);
     let temp = prepData.get();
 
-    const stmt = db.prepare(`SELECT * FROM users`);
+    /*const stmt = db.prepare(`SELECT * FROM users`);
     let all = stmt.all();
-    res.render('fitness-logs', {user: all});
+    res.render('fitness-logs', {user: all});*/
+
+    const time = new Date(Date.now());
+    db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time.toISOString()}');`);
 
     if (temp === undefined) {
         res.render('userName-incorrect2');
     }
     else {
-        const time = new Date(Date.now());
-        db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time}')`);
-        /*const stmt = db.prepare(`SELECT * FROM log`);
-        let all = stmt.all();
-        res.render('fitness-logs', {log: all});*/
         req.app.set('user', userName);
         res.render('home');
     };
@@ -110,6 +108,12 @@ app.post('/DeleteAcntPg', (req, res) => {
 
 app.post('/logout', (req, res) => {
     res.render('login');
+});
+
+app.post('/viewLogs', (req, res) => {
+    const stmt = db.prepare(`SELECT * FROM log`);
+    let all = stmt.all();
+    res.render('user-logs', {log: all});
 });
 
 // Function to display data

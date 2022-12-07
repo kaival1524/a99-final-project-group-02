@@ -9,12 +9,18 @@
 
 <body>
   <div class="text-box">
-    <h1>Fitness Info</h1>
-    <ul>
-    <%user.forEach(function(dat) {%>
-    <p><%= dat.user %></p>
-    <%});%>
-    </ul>
+    <h1>User Logs</h1>
+    <p class="normal-text">
+      <ul>
+        <% log.forEach(function(dat) { %>
+          User: <%= dat.user %>
+          <br>
+          Logged in on <%= dat.date%>
+          <br>
+          <br>
+      <% }); %>
+      </ul>
+    </p>
     <form method = "post" action = "/returnHome">
       <input type = "submit" value = "Back" class = "red">
     </form>
