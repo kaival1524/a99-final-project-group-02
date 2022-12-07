@@ -30,8 +30,13 @@ try {
 } catch (error) {}
 
 try {
-    db.exec(`CREATE TABLE fitness (id INTEGER PRIMARY KEY AUTOINCREMENT, userName VARCHAR, passWord VARCHAR);`);
+    db.exec(`CREATE TABLE fitness (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
 } catch (error) {}
+
+try {
+    db.exec(`CREATE TABLE log (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, type VARCHAR, date VARCHAR);`);
+} catch (error) {}
+
 
 // Endpoints For Rendering Pages and Buttons
 app.get('/', (req, res) => {
@@ -52,10 +57,20 @@ app.post('/enterLogin', (req, res) => {
     const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}' and pass = '${passWord}'`);
     let temp = prepData.get();
 
+    const stmt = db.prepare(`SELECT * FROM users`);
+    let all = stmt.all();
+    res.render('fitness-logs', {user: all});
+
     if (temp === undefined) {
         res.render('userName-incorrect2');
     }
     else {
+        const time = new Date(Date.now());
+        db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time}')`);
+        /*const stmt = db.prepare(`SELECT * FROM log`);
+        let all = stmt.all();
+        res.render('fitness-logs', {log: all});*/
+        req.app.set('user', userName);
         res.render('home');
     };
 });
@@ -70,7 +85,7 @@ app.post('/createAccount', (req, res) => {
         db.exec(`INSERT INTO users (user, pass) VALUES ('${userName}', '${passWord}')`)
         res.render('create-account');
     }
-    else {res.render('userName-incorrect')};
+    else {res.render('userName-exists')};
  });
 
 app.post('/returnLogin', (req, res) => {
@@ -94,8 +109,11 @@ app.post('/DeleteAcntPg', (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.render('logout');
+    res.render('login');
 });
+
+// Function to display data
+    
 
 // app.post('/createaccount', (req, res) => {
 //     const userName = req.body.username;
