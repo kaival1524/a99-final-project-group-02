@@ -30,7 +30,7 @@ try {
 } catch (error) {}
 
 try {
-    db.exec(`CREATE TABLE fitness (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
+    db.exec(`CREATE TABLE finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
 } catch (error) {}
 
 try {
@@ -99,7 +99,7 @@ app.post('/enterWorkout', (req, res) => {
     const type = req.body.type;
     const date = req.body.date;
     let userName = req.app.get('user');
-    db.exec(`INSERT INTO fitness (user, time, type, date) VALUES ('${userName}', '${time}', '${type}', '${date}')`)
+    db.exec(`INSERT INTO finess (user, time, type, date) VALUES ('${userName}', '${time}', '${type}', '${date}');`);
     res.render('entry-success');
 });
 
@@ -108,6 +108,8 @@ app.post('/returnHome', (req, res) => {
 });
 
 app.post('/DeleteAcntPg', (req, res) => {
+    const userName = req.body.username;
+    const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}'`);
     res.render('delete-account');
 });
 
@@ -122,9 +124,10 @@ app.post('/viewLogs', (req, res) => {
 });
 
 app.post('/viewPastWorkouts', (req, res) => {
-    const stmt = db.prepare(`SELECT * FROM fitness`);
+    let userName = req.app.get('user');
+    const stmt = db.prepare(`SELECT * FROM finess WHERE user = '${userName}'`);
     let all = stmt.all();
-    res.render('fitness-logs', {fitness: all});
+    res.render('fitness-logs', {finess: all});
 })
 
 // app.post('/createaccount', (req, res) => {
