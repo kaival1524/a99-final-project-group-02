@@ -108,8 +108,8 @@ app.post('/returnHome', (req, res) => {
 });
 
 app.post('/DeleteAcntPg', (req, res) => {
-    const userName = req.body.username;
-    const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}'`);
+    const userName = req.app.get('user');
+    db.exec(`DELETE FROM users WHERE user = '${userName}'`);
     res.render('delete-account');
 });
 
