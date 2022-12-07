@@ -15,6 +15,7 @@ Fitness Friend is a tool for users to track their daily fitness activity by reco
 + [nodemon - v2.0.20](https://www.npmjs.com/package/nodemon)
 
 ## Video Demo
+[Video Demo](https://www.youtube.com/watch?v=dosyyIft3TU)
 
 ## Project Preview and Planning
 
