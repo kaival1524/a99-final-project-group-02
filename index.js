@@ -95,6 +95,11 @@ app.post('/NewFitnessInfo', (req, res) => {
 });
 
 app.post('/enterWorkout', (req, res) => {
+    const time = req.body.time;
+    const type = req.body.type;
+    const date = req.body.date;
+    let userName = req.app.get('user');
+    db.exec(`INSERT INTO fitness (user, time, type, date) VALUES ('${userName}', '${time}', '${type}', '${date}')`)
     res.render('entry-success');
 });
 
@@ -116,8 +121,11 @@ app.post('/viewLogs', (req, res) => {
     res.render('user-logs', {log: all});
 });
 
-// Function to display data
-    
+app.post('/viewPastWorkouts', (req, res) => {
+    const stmt = db.prepare(`SELECT * FROM fitness`);
+    let all = stmt.all();
+    res.render('fitness-logs', {fitness: all});
+})
 
 // app.post('/createaccount', (req, res) => {
 //     const userName = req.body.username;

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
-  <title>View Logs</title>
+  <title>Past Workouts</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div class="text-box">
-    <h1>User Logs</h1>
+    <h1>Past Workouts</h1>
     <p class="normal-text">
       <ul>
-        <% log.forEach(function(dat) { %>
-          User: <%= dat.user %>
+        <% fitness.forEach(function(dat) { %>
+          Time: <%= dat.time%>
           <br>
-          Logged in on <%= dat.date%>
+          Type: <%= dat.type%>
           <br>
+          Date: <%= dat.date%>
           <br>
       <% }); %>
       </ul>
