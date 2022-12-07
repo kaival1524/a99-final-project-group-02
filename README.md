@@ -18,6 +18,8 @@ Fitness Friend is a tool for users to track their daily fitness activity by reco
 
 ## Project Preview and Planning
 
+[Project Preview and Planning Documentation](docs/plan.md)
+
 ## Install and Run
 
 1. Clone this repository and run `npm install` to install all dependencies needed to run this API.
