@@ -24,21 +24,26 @@ app.set('views', path.join(path.dirname(fileURLToPath(import.meta.url)), 'views'
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initialize database
+// Initialize database tables
 try {
-    db.exec(`CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR);`);
-} catch (error) {}
-
-try {
-    db.exec(`CREATE TABLE finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
-} catch (error) {}
+    db.exec(`CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, pass VARCHAR);`);
+} catch (error) {
+    console.log(error)
+}
 
 try {
-    db.exec(`CREATE TABLE log (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, type VARCHAR, date VARCHAR);`);
-} catch (error) {}
+    db.exec(`CREATE TABLE IF NOT EXISTS finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
+} catch (error) {
+    console.log(error)
+}
 
+try {
+    db.exec(`CREATE TABLE IF NOT EXISTS log (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, type VARCHAR, date VARCHAR);`);
+} catch (error) {
+    console.log(error)
+}
 
-// Endpoints For Rendering Pages and Buttons
+// Endpoints For Rendering Pages and Buttons - Refer to documentation
 app.get('/', (req, res) => {
     res.render('login');
 });
@@ -57,12 +62,8 @@ app.post('/enterLogin', (req, res) => {
     const prepData = db.prepare(`SELECT * FROM users WHERE user = '${userName}' and pass = '${passWord}'`);
     let temp = prepData.get();
 
-    /*const stmt = db.prepare(`SELECT * FROM users`);
-    let all = stmt.all();
-    res.render('fitness-logs', {user: all});*/
-
     const time = new Date(Date.now());
-    db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time.toISOString()}');`);
+    db.exec(`INSERT INTO log (user, type, date) VALUES ('${userName}', 'Login', '${time}');`);
 
     if (temp === undefined) {
         res.render('userName-incorrect2');
@@ -129,60 +130,6 @@ app.post('/viewPastWorkouts', (req, res) => {
     let all = stmt.all();
     res.render('fitness-logs', {finess: all});
 })
-
-// app.post('/createaccount', (req, res) => {
-//     const userName = req.body.username;
-//     const passWord = req.body.password;
-//     const accountCreationTime = new Date(Date.now());
-
-//     // SQL query to add to database
-
-//     // if username exists, render 'username exists, try another username' button for returning to login
-//     // if valid username, render 'success, account is created' button for returning to login
-// });
-
-// app.get('/deleteaccount', (req, res) => {
-//     const accountDeletionTime = new Date(Date.now());
-    
-//     // SQL query to remove from database
-
-//     // render delete account page, button for returning to login
-// });
-
-// app.post('/login', (req, res) => {
-//     const userName = req.body.username;
-//     const passWord = req.body.password;
-//     const logInTime = new Date(Date.now());
-
-//     // SQL query to store login times
-
-//     // if unsuccessful login, render 'incorrect username or password', button for returning to login
-//     // else render homepage (uncomment line below)
-//     // res.render('homepage');
-
-// });
-
-// app.get('/logout', (req, res) => {
-//     const logOutTime = new Date(Date.now());
-
-//     // SQL query to store logout times
-    
-//     // render login page (uncomment line below)
-//     // res.render('login')
-
-// });
-
-// app.post('/fitnesslog', (req, res) => {
-//     const time = req.body.exercisetime;
-//     const type = req.body.workoutype;
-//     const exerciseLogTime = new Date(Date.now());
-    
-//     // SQL query to store fitness information
-// });
-
-// app.get('/pastfitness', (req, res) => {
-
-// });
 
 // Post 404 if no endpoint found
 app.get('*', (req, res) => {
