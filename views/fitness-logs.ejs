@@ -12,12 +12,10 @@
     <p class="normal-text">
       <ul>
         <% finess.forEach(function(dat) { %>
-          Time: <%= dat.time %>
+          <h2><%= dat.date %></h2>
+          Duration: <%= dat.duration %>
           <br>
           Type: <%= dat.type %>
-          <br>
-          Date: <%= dat.date %>
-          <br>
           <br>
       <% }); %>
       </ul>

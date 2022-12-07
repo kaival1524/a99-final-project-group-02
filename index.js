@@ -32,7 +32,7 @@ try {
 }
 
 try {
-    db.exec(`CREATE TABLE IF NOT EXISTS finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, time VARCHAR, type VARCHAR, date VARCHAR);`);
+    db.exec(`CREATE TABLE IF NOT EXISTS finess (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR, duration VARCHAR, type VARCHAR, date VARCHAR, time VARCHAR);`);
 } catch (error) {
     console.log(error)
 }
@@ -96,11 +96,12 @@ app.post('/NewFitnessInfo', (req, res) => {
 });
 
 app.post('/enterWorkout', (req, res) => {
-    const time = req.body.time;
+    const duration = req.body.duration;
     const type = req.body.type;
     const date = req.body.date;
+    const timeLogged = new Date(Date.now()); // Store when the entry was logged
     let userName = req.app.get('user');
-    db.exec(`INSERT INTO finess (user, time, type, date) VALUES ('${userName}', '${time}', '${type}', '${date}');`);
+    db.exec(`INSERT INTO finess (user, duration, type, date, time) VALUES ('${userName}', '${duration}', '${type}', '${date}', '${timeLogged}')`);
     res.render('entry-success');
 });
 
@@ -110,6 +111,7 @@ app.post('/returnHome', (req, res) => {
 
 app.post('/DeleteAcntPg', (req, res) => {
     const userName = req.app.get('user');
+    db.exec(`DELETE FROM finess WHERE user = '${userName}'`);
     db.exec(`DELETE FROM users WHERE user = '${userName}'`);
     res.render('delete-account');
 });
@@ -119,14 +121,14 @@ app.post('/logout', (req, res) => {
 });
 
 app.post('/viewLogs', (req, res) => {
-    const stmt = db.prepare(`SELECT * FROM log`);
+    const stmt = db.prepare(`SELECT * FROM log ORDER BY date DESC`);
     let all = stmt.all();
     res.render('user-logs', {log: all});
 });
 
 app.post('/viewPastWorkouts', (req, res) => {
     let userName = req.app.get('user');
-    const stmt = db.prepare(`SELECT * FROM finess WHERE user = '${userName}'`);
+    const stmt = db.prepare(`SELECT * FROM finess WHERE user = '${userName}' ORDER BY date DESC`);
     let all = stmt.all();
     res.render('fitness-logs', {finess: all});
 })

@@ -20,3 +20,9 @@ Discussed new roles for each team member and assigned frontend, backend and docu
 ## **Meeting 3 (12/6)**
 
 We held a meeting to finish debugging the front end of our code. We also worked on creating the database and using it to store user data and interactions. Documentation for endpoints created as well.
+
+## **(12/7)**
+
+Made some minor improvements and tweaks, including:
++ User logs and past fitness logs now displays entries with the most recent first.
++ When a user deletes their account, their fitness data is deleted as well.
