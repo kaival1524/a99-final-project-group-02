@@ -23,7 +23,7 @@ Fitness Friend is a tool for users to track their daily fitness activity by reco
 ## Install and Run
 
 1. Clone this repository and run `npm install` to install all dependencies needed to run this API.
-2. Run `npm start` to start the server on port 5000. Run `npm start --port ` followed by a port number to set a custom port.
+2. Run `npm start` to start the server on port 5000. Run `node index.js --port` followed by a port number to set a custom port.
 3. Once started, the terminal will print "Server listening on port", followed by the port you specified. Navigate to localhost:port_number  in your browser.
 
 ## Team Roles
