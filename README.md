@@ -1,5 +1,3 @@
-# a99 Final Project 
- 
 ## Fitness Friend
 
 Final Project For Group 2
