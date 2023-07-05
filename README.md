@@ -1,6 +1,4 @@
-## Fitness Friend
-
-Final Project For Group 2
+# Fitness Friend
 
 ## Summary 
 
